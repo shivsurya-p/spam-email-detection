@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 import joblib
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../templates")
 
 model = joblib.load('model.pkl')
 vectorizer = joblib.load('vectorizer.pkl')
