@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+
+    <style>
+
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(to right,#141e30,#243b55);
+            font-family:Arial;
+        }
+
+        .container{
+            background:rgba(255,255,255,0.1);
+            padding:50px;
+            border-radius:20px;
+            text-align:center;
+            backdrop-filter:blur(10px);
+            box-shadow:0 0 25px rgba(0,0,0,0.3);
+            width:500px;
+            color:white;
+        }
+
+        h1{
+            font-size:55px;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:18px;
+            line-height:1.6;
+            color:#dcdcdc;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        button{
+            margin-top:25px;
+            padding:15px 30px;
+            font-size:20px;
+            border:none;
+            border-radius:12px;
+            cursor:pointer;
+            background:white;
+            color:#243b55;
+            transition:0.3s;
+            font-weight:bold;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+            background:#e6e6e6;
+        }
+
+        .footer{
+            margin-top:30px;
+            font-size:14px;
+            color:#cfcfcf;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📧 Spam Email Detection</h1>
+
+        <p>
+            This project uses Machine Learning to detect
+            whether a message is Spam or Not Spam.
+        </p>
+
+        <a href="/checker">
+            <button>
+                Open Spam Checker
+            </button>
+        </a>
+
+        <div class="footer">
+            Developed using Flask & Machine Learning
+        </div>
+
+    </div>
+
+</body>
+
+</html>

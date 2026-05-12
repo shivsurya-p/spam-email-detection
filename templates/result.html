@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Result</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:30px;
+            background:linear-gradient(to right,#141e30,#243b55);
+            font-family:Arial;
+            color:white;
+        }
+
+        .result-box{
+            background:white;
+            color:black;
+            padding:40px;
+            border-radius:15px;
+            text-align:center;
+            width:500px;
+            margin:auto;
+            box-shadow:0 0 20px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            font-size:40px;
+        }
+
+        .confidence{
+            font-size:22px;
+            margin-top:10px;
+        }
+
+        button{
+            margin-top:20px;
+            padding:12px 25px;
+            border:none;
+            border-radius:10px;
+            background:#243b55;
+            color:white;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#141e30;
+        }
+
+        .history{
+            margin-top:40px;
+            background:white;
+            color:black;
+            padding:20px;
+            border-radius:15px;
+            width:700px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        .item{
+            border-bottom:1px solid gray;
+            padding:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="result-box">
+
+        {% if "Spam" in prediction %}
+
+        <h1 style="color:red;">
+            {{ prediction }}
+        </h1>
+
+        {% else %}
+
+        <h1 style="color:green;">
+            {{ prediction }}
+        </h1>
+
+        {% endif %}
+
+        <div class="confidence">
+            Confidence: {{ confidence }}%
+        </div>
+
+        <a href="/checker">
+            <button>Check Another Message</button>
+        </a>
+
+    </div>
+
+    <div class="history">
+
+        <h2>Previous Checks</h2>
+
+        {% for item in history[::-1] %}
+
+        <div class="item">
+
+            <p><b>Message:</b> {{ item.message }}</p>
+
+            <p><b>Result:</b> {{ item.result }}</p>
+
+            <p><b>Confidence:</b> {{ item.confidence }}%</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
