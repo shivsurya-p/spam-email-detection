@@ -2,40 +2,152 @@
 <html>
 
 <head>
-    <title>Home</title>
+
+    <title>Spam Email Detection</title>
 
     <style>
 
-        body{
+        *{
             margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
             height:100vh;
+
             display:flex;
+
             justify-content:center;
+
             align-items:center;
-            background:linear-gradient(to right,#141e30,#243b55);
+
+            background:linear-gradient(
+                -45deg,
+                #141e30,
+                #243b55,
+                #0f2027,
+                #203a43
+            );
+
+            background-size:400% 400%;
+
+            animation:gradientBG 12s ease infinite;
+
             font-family:Arial;
+
+            overflow:hidden;
+        }
+
+        @keyframes gradientBG{
+
+            0%{
+                background-position:0% 50%;
+            }
+
+            50%{
+                background-position:100% 50%;
+            }
+
+            100%{
+                background-position:0% 50%;
+            }
         }
 
         .container{
-            background:rgba(255,255,255,0.1);
+
+            width:650px;
+
+            background:rgba(255,255,255,0.12);
+
+            backdrop-filter:blur(12px);
+
             padding:50px;
-            border-radius:20px;
+
+            border-radius:25px;
+
             text-align:center;
-            backdrop-filter:blur(10px);
-            box-shadow:0 0 25px rgba(0,0,0,0.3);
-            width:500px;
+
             color:white;
+
+            box-shadow:0 0 30px rgba(0,0,0,0.4);
+
+            animation:fadeIn 1.2s;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0px);
+            }
         }
 
         h1{
-            font-size:55px;
+
+            font-size:58px;
+
             margin-bottom:20px;
         }
 
-        p{
-            font-size:18px;
-            line-height:1.6;
-            color:#dcdcdc;
+        .subtitle{
+
+            font-size:20px;
+
+            line-height:1.7;
+
+            color:#e2e2e2;
+
+            margin-bottom:35px;
+        }
+
+        .features{
+
+            display:grid;
+
+            grid-template-columns:1fr 1fr;
+
+            gap:18px;
+
+            margin-bottom:35px;
+        }
+
+        .card{
+
+            background:rgba(255,255,255,0.15);
+
+            padding:18px;
+
+            border-radius:15px;
+
+            transition:0.3s;
+        }
+
+        .card:hover{
+
+            transform:translateY(-5px);
+
+            background:rgba(255,255,255,0.2);
+        }
+
+        .card h3{
+
+            margin-bottom:10px;
+
+            font-size:20px;
+        }
+
+        .card p{
+
+            font-size:15px;
+
+            color:#e6e6e6;
         }
 
         a{
@@ -43,27 +155,58 @@
         }
 
         button{
-            margin-top:25px;
-            padding:15px 30px;
-            font-size:20px;
+
+            padding:16px 34px;
+
+            font-size:22px;
+
             border:none;
-            border-radius:12px;
+
+            border-radius:14px;
+
             cursor:pointer;
+
             background:white;
+
             color:#243b55;
-            transition:0.3s;
+
             font-weight:bold;
+
+            transition:0.3s;
+
+            box-shadow:0 0 15px rgba(255,255,255,0.3);
         }
 
         button:hover{
-            transform:scale(1.05);
-            background:#e6e6e6;
+
+            transform:scale(1.08);
+
+            background:#f2f2f2;
         }
 
         .footer{
+
             margin-top:30px;
-            font-size:14px;
-            color:#cfcfcf;
+
+            font-size:15px;
+
+            color:#d4d4d4;
+        }
+
+        @media(max-width:700px){
+
+            .container{
+                width:90%;
+                padding:30px;
+            }
+
+            h1{
+                font-size:42px;
+            }
+
+            .features{
+                grid-template-columns:1fr;
+            }
         }
 
     </style>
@@ -74,21 +217,78 @@
 
     <div class="container">
 
-        <h1>📧 Spam Email Detection</h1>
+        <h1>📧 Spam Detection AI</h1>
 
-        <p>
-            This project uses Machine Learning to detect
-            whether a message is Spam or Not Spam.
-        </p>
+        <div class="subtitle">
+
+            Detect spam emails and messages using
+            Machine Learning, NLP, TF-IDF Vectorization,
+            and Naive Bayes Classification.
+
+        </div>
+
+        <div class="features">
+
+            <div class="card">
+
+                <h3>⚡ Fast Detection</h3>
+
+                <p>
+                    Instantly predicts spam messages
+                    with high accuracy.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>🧠 Machine Learning</h3>
+
+                <p>
+                    Uses NLP and trained AI models
+                    for smart classification.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>📊 Confidence Score</h3>
+
+                <p>
+                    Shows probability confidence
+                    percentage for each prediction.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>🔒 Secure Analysis</h3>
+
+                <p>
+                    Messages are processed securely
+                    without storing user data.
+                </p>
+
+            </div>
+
+        </div>
 
         <a href="/checker">
+
             <button>
+
                 Open Spam Checker
+
             </button>
+
         </a>
 
         <div class="footer">
-            Developed using Flask & Machine Learning
+
+            Developed using Flask, NLP & Machine Learning
+
         </div>
 
     </div>

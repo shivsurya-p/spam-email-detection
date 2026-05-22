@@ -2,67 +2,174 @@
 <html>
 
 <head>
-    <title>Result</title>
+
+    <title>Spam Detection Result</title>
 
     <style>
 
-        body{
+        *{
             margin:0;
-            padding:30px;
-            background:linear-gradient(to right,#141e30,#243b55);
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
             font-family:Arial;
+            background:linear-gradient(to right,#141e30,#243b55);
+            min-height:100vh;
+            padding:40px;
             color:white;
         }
 
         .result-box{
-            background:white;
-            color:black;
-            padding:40px;
-            border-radius:15px;
-            text-align:center;
-            width:500px;
+
+            width:550px;
+
             margin:auto;
-            box-shadow:0 0 20px rgba(0,0,0,0.3);
+
+            background:white;
+
+            color:black;
+
+            padding:40px;
+
+            border-radius:20px;
+
+            text-align:center;
+
+            box-shadow:0 0 25px rgba(0,0,0,0.4);
+
+            animation:fadeIn 1s;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(-20px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0px);
+            }
         }
 
         h1{
-            font-size:40px;
+            font-size:42px;
+            margin-bottom:20px;
         }
 
         .confidence{
-            font-size:22px;
-            margin-top:10px;
+
+            margin-top:15px;
+
+            font-size:24px;
+
+            font-weight:bold;
+        }
+
+        .message-box{
+
+            margin-top:25px;
+
+            background:#f3f3f3;
+
+            padding:20px;
+
+            border-radius:12px;
+
+            word-wrap:break-word;
+        }
+
+        .message-box h3{
+            margin-bottom:10px;
+            color:#243b55;
         }
 
         button{
-            margin-top:20px;
-            padding:12px 25px;
+
+            margin-top:30px;
+
+            padding:14px 28px;
+
             border:none;
-            border-radius:10px;
+
+            border-radius:12px;
+
             background:#243b55;
+
             color:white;
+
             font-size:18px;
+
             cursor:pointer;
+
+            transition:0.3s;
         }
 
         button:hover{
+
             background:#141e30;
+
+            transform:scale(1.05);
         }
 
         .history{
-            margin-top:40px;
+
+            width:750px;
+
+            margin:40px auto;
+
             background:white;
+
             color:black;
-            padding:20px;
-            border-radius:15px;
-            width:700px;
-            margin-left:auto;
-            margin-right:auto;
+
+            padding:25px;
+
+            border-radius:20px;
+
+            box-shadow:0 0 20px rgba(0,0,0,0.3);
+
+            max-height:500px;
+
+            overflow-y:auto;
+        }
+
+        .history h2{
+
+            text-align:center;
+
+            margin-bottom:20px;
+
+            color:#243b55;
         }
 
         .item{
-            border-bottom:1px solid gray;
-            padding:10px;
+
+            background:#f7f7f7;
+
+            padding:18px;
+
+            border-radius:12px;
+
+            margin-bottom:15px;
+
+            border-left:6px solid #243b55;
+        }
+
+        .item p{
+            margin:8px 0;
+        }
+
+        .spam{
+            color:red;
+            font-weight:bold;
+        }
+
+        .ham{
+            color:green;
+            font-weight:bold;
         }
 
     </style>
@@ -76,23 +183,39 @@
         {% if "Spam" in prediction %}
 
         <h1 style="color:red;">
-            {{ prediction }}
+            🚨 Spam Detected
         </h1>
 
         {% else %}
 
         <h1 style="color:green;">
-            {{ prediction }}
+            ✅ Safe Message
         </h1>
 
         {% endif %}
 
         <div class="confidence">
+
             Confidence: {{ confidence }}%
+
+        </div>
+
+        <div class="message-box">
+
+            <h3>Message Checked</h3>
+
+            <p>{{ message }}</p>
+
         </div>
 
         <a href="/checker">
-            <button>Check Another Message</button>
+
+            <button>
+
+                Check Another Message
+
+            </button>
+
         </a>
 
     </div>
@@ -105,11 +228,45 @@
 
         <div class="item">
 
-            <p><b>Message:</b> {{ item.message }}</p>
+            <p>
 
-            <p><b>Result:</b> {{ item.result }}</p>
+                <b>Message:</b>
 
-            <p><b>Confidence:</b> {{ item.confidence }}%</p>
+                {{ item.message }}
+
+            </p>
+
+            <p>
+
+                <b>Result:</b>
+
+                {% if "Spam" in item.result %}
+
+                <span class="spam">
+
+                    {{ item.result }}
+
+                </span>
+
+                {% else %}
+
+                <span class="ham">
+
+                    {{ item.result }}
+
+                </span>
+
+                {% endif %}
+
+            </p>
+
+            <p>
+
+                <b>Confidence:</b>
+
+                {{ item.confidence }}%
+
+            </p>
 
         </div>
 
